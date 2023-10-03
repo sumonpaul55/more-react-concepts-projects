@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const Login = () => {
+    const { loginUser } = useContext(AuthContext)
     const handleLogin = (e) => {
+        e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-
+        loginUser(email, password)
+            .then((result) => {
+                console.log(result.user)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
     return (
         <div className='container mx-auto'>
-            <form className=''>
+            <form className='' onSubmit={handleLogin}>
 
                 <div>
                     <input type="email" name='email' placeholder='email' required className='border p-2 my-2' />

@@ -1,21 +1,28 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 
 const Registration = () => {
     // create use in firebase
-    const authInfo = useContext(AuthContext)
-    const { createUser } = authInfo;
+    const { createUser } = useContext(AuthContext)
     const handleLogin = (e) => {
+        e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
         const checkbox = e.target.checkbox.checked;
-        createUser(email, password);
+        createUser(email, password)
+            .then((result) => {
+                console.log(result.user)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
     return (
         <div className='container mx-auto'>
-            <form className=''>
+            <form className='' onSubmit={handleLogin}>
                 <div>
                     <input type="text" name='name' placeholder='Name' required className='border p-2 my-2' />
                 </div>
