@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const Registration = () => {
+    // create use in firebase
+    const authInfo = useContext(AuthContext)
+    const { createUser } = authInfo;
     const handleLogin = (e) => {
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
         const checkbox = e.target.checkbox.checked;
-
+        createUser(email, password);
     }
     return (
         <div className='container mx-auto'>
