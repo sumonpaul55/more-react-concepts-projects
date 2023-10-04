@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 
 const Registration = () => {
+    const navigate = useNavigate();
     // create use in firebase
     const { createUser } = useContext(AuthContext)
     const handleLogin = (e) => {
@@ -16,6 +17,7 @@ const Registration = () => {
             .then((result) => {
                 console.log(result.user)
                 e.target.reset();
+                navigate("/")
             })
             .catch((error) => {
                 console.log(error)

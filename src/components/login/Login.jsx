@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate, } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 
 const Login = () => {
+    const navigate = useNavigate();
     const { loginUser } = useContext(AuthContext)
     const handleLogin = (e) => {
         e.preventDefault();
@@ -12,7 +13,7 @@ const Login = () => {
             .then((result) => {
                 console.log(result.user)
                 e.target.reset();
-                <Navigate to="/"></Navigate>
+                navigate("/")
             })
             .catch((error) => {
                 console.log(error)
