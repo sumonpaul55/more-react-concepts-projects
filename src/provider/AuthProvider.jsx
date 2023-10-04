@@ -13,11 +13,12 @@ const AuthProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        onAuthStateChanged(auth, currenUser => {
-            setUser(currenUser)
+        const unSubscribe = onAuthStateChanged(auth, currentUser => {
+            setUser(currentUser)
         })
+        return () => unSubscribe()
     }, [])
-    console.log(user)
+
 
     const authInfo = { user, createUser, loginUser }
     return (
