@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 
 const Registration = () => {
@@ -15,6 +15,7 @@ const Registration = () => {
         createUser(email, password)
             .then((result) => {
                 console.log(result.user)
+                e.target.reset();
             })
             .catch((error) => {
                 console.log(error)

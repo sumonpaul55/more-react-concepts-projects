@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 
 const Login = () => {
@@ -11,6 +11,8 @@ const Login = () => {
         loginUser(email, password)
             .then((result) => {
                 console.log(result.user)
+                e.target.reset();
+                <Navigate to="/"></Navigate>
             })
             .catch((error) => {
                 console.log(error)
