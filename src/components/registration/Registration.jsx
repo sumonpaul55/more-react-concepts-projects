@@ -6,7 +6,7 @@ import { AuthContext } from '../../provider/AuthProvider';
 const Registration = () => {
     const navigate = useNavigate();
     // create use in firebase
-    const { createUser } = useContext(AuthContext)
+    const { createUser, signinWithgoogle } = useContext(AuthContext)
     const handleLogin = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
@@ -22,6 +22,11 @@ const Registration = () => {
             .catch((error) => {
                 console.log(error)
             })
+    }
+    const handleGooglesignin = () => {
+        signinWithgoogle()
+            .then(result => console.log(result.user))
+            .catch(err => console.log(err))
     }
     return (
         <div className='container mx-auto'>
@@ -41,6 +46,9 @@ const Registration = () => {
             </form>
             <div className='flex items-center gap-1'>
                 <p>Do You have already an Account</p> <Link to="/login" className='text-blue-800 font-semibold'>Login</Link>
+            </div>
+            <div>
+                <button className='bg-gray-300 px-4 py-2' onClick={handleGooglesignin}>Google</button>
             </div>
         </div>
     );

@@ -36,6 +36,9 @@ const Login = () => {
             <div className='flex items-center gap-1'>
                 <p>Are You new here? Please register</p> <Link to="/registration" className='text-blue-800 font-semibold'>Register</Link>
             </div>
+            <div className='mt-3'>
+                <button className='bg-gray-300 px-3 py-2'>Google</button>
+            </div>
         </div>
     );
 };
