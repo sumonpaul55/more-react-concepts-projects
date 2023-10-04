@@ -22,6 +22,11 @@ const Header = () => {
                         <NavLink to="/login">login</NavLink>
                         <NavLink to="/registration">registration</NavLink>
                         <NavLink to="/order">Order</NavLink>
+                        {
+                            user && <> <NavLink to="/order">profile</NavLink>
+                                <NavLink to="/order">Order</NavLink>
+                                <NavLink to="/order">profile</NavLink></>
+                        }
                     </div>
                     {
                         user ?
